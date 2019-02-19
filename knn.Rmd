@@ -1,8 +1,0 @@
----
-    Title: "K-Nearest Neighbors"
-    Author: "Antonio Moreira"
-    output: html_notebook
----
-# KNN
-KNN is a classification algorithm
-

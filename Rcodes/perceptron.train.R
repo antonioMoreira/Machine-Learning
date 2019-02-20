@@ -5,7 +5,9 @@
 # Gera um hiperplano no espaço de dados
 # 		↳ um "degrau"
 f <- function(net, energy = 0.5){
-	if(net >= energy)
+	print(net)
+    
+    if(net >= energy)
 		return(1)
 	else
 		return(0)
@@ -64,37 +66,37 @@ perceptron.train <- function(dataset, eta=0.1, threshold = 1e-3){
 	
 	while(sqerror > threshold){
 	  sqerror = 0
-	  
-  	for(i in 1:nrow(dataset)){
-  		# i-ésima linha do conjunto X de treinamento
-  		x = as.numeric(X[i,])
-  
-  		# i-ésimo valor esperado de Y
-  		y = Y[i]
-  
-  		# aplicando essa linha no percepetron
-  		# 	utiliza o operador de multiplicação matricial para obter 'net'
-  		#	pesos * (X[i,],1)
-  		#	ps: concatena com [1] por causa de theta
-  		net = c(x,1) %*% weights
-  
-  		# ŷ valor obtido da função de ativação
-  		ŷ = f(net)
-  
-  		# cálculo do erro = (y-ŷ)
-  		# 	portanto, erro² = (y-ŷ)² = E²
-  		error = (y-ŷ)
-      sqerror = sqerror + error^2
-  		
-  		# vetor com a derivada da função erro ao quadrado aplicado a cada peso
-  		dE2 = derivateError2(c(x,1),error)
-  		
-  		weights = gradientDescent(weights, eta, dE2)
-  	}
+
+        for(i in 1:nrow(dataset)){
+      		# i-ésima linha do conjunto X de treinamento
+      		x = as.numeric(X[i,])
+      
+      		# i-ésimo valor esperado de Y
+      		y = Y[i]
+      
+      		# aplicando essa linha no percepetron
+      		# 	utiliza o operador de multiplicação matricial para obter 'net'
+      		#	pesos * (X[i,],1)
+      		#	ps: concatena com [1] por causa de theta
+      		net = c(x,1) %*% weights
+      		
+      		# ŷ valor obtido da função de ativação
+      		ŷ = f(net)
+      		
+      		# cálculo do erro = (y-ŷ)
+      		# 	portanto, erro² = (y-ŷ)² = E²
+      		error = (y-ŷ)
+          sqerror = sqerror + error^2
+      		
+      		# vetor com a derivada da função erro ao quadrado aplicado a cada peso
+      		dE2 = derivateError2(c(x,1),error)
+      		
+      		weights = gradientDescent(weights, eta, dE2)
+  	    }
 	  
 	  # normalizando o erro
 	  sqerror = sqerror / nrow(X)
-	  cat("sqerror = ", sqerror, '\n')
+	  #cat("sqerror = ", sqerror, '\n')
 	}
 
   return(weights)

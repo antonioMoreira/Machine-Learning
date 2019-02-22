@@ -1,6 +1,9 @@
 #Auxiliary books
 Books/
 
+#Usp Documents
+USP/
+
 #Rstudio
 .Rproj.user
 .Rhistory

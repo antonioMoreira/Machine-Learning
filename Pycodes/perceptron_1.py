@@ -1,5 +1,7 @@
 import numpy as np
-
+#import pandas as pd
+from matplotlib import pyplot as plt
+import seaborn as sns
 
 def f(net, energy = 0.5):
     if net >= energy:
@@ -59,6 +61,7 @@ def perceptron_train(dataset, eta=0.1, threshold = 1e-3):
         sqrterror = sqrterror/dataDim[0]
         print("error: ", sqrterror)
 
+    print(weights)
     return(weights)
 
 
